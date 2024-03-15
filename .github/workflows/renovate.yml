@@ -21,10 +21,10 @@ jobs:
         run: |
           docker run \
           --env LOG_LEVEL=${{ inputs.loglevel || 'info' }} \
-          --env RENOVATE_TOKEN="${TOKEN}" \
+          --env RENOVATE_TOKEN="${{ secrets.TOKEN }}" \
           --env RENOVATE_REPOSITORIES="$REPOSITORIES" \
           --volume /tmp:/tmp \
           --rm renovate/renovate:${{ env.RENOVATE_VERSION }}
         env:
           REPOSITORIES: 'walczakp/renovate-sbt-issue'
-          TOKEN: 'x-access-token:${{ secrets.GITHUB_TOKEN }}'
+          # TOKEN: 'x-access-token:${{ secrets.GITHUB_TOKEN }}'
